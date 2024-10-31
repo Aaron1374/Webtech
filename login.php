@@ -29,7 +29,7 @@ try {
             $_SESSION['education'] = $user['education'];
             $_SESSION['dob'] = $user['dob'];
 
-            echo "<script>alert('Login successful');</script>";
+           // echo "<script>alert('Login successful');</script>";
             echo "<script>window.location.href = 'home.html';</script>";  //do this after home done
             exit();
         } else {
