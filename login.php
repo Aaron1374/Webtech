@@ -30,7 +30,7 @@ try {
             $_SESSION['dob'] = $user['dob'];
 
            // echo "<script>alert('Login successful');</script>";
-            echo "<script>window.location.href = 'home.html';</script>";  //do this after home done
+            echo "<script>window.location.href = 'homepage.html';</script>";  //do this after home done
             exit();
         } else {
             echo "<script>alert('Login failed! Please check your credentials.');</script>";

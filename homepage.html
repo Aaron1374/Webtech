@@ -1,29 +1,6 @@
-<?php
-session_start(); 
-
-$host = 'localhost';
-$db = 'student';
-$user = 'root';
-$pass = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $stmt = $pdo->query("SELECT jl.*, c.logo, c.company_name FROM job_listings jl JOIN companies c ON jl.company_id = c.id");
-    $jobListings = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Listings</title>
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Port+Lligat+Slab&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -42,42 +19,67 @@ try {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
-
-
-
-    <link rel="stylesheet" href="studentListings.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homepage.css">
+    <title>Document</title>
 </head>
 <body>
-    <header class="header">
-        <h1>Job Listings</h1>
-        <div class="search-container">
-            <input type="text" placeholder="Search by position..." id="searchInput" onkeyup="filterListings()">
-            <select id="filterSelect" onchange="filterListings()">
-                <option value="">All Positions</option>
-                <?php foreach ($jobListings as $job): ?>
-                    <option value="<?php echo $job['position']; ?>"><?php echo $job['position']; ?></option>
-                <?php endforeach; ?>
-            </select>
+    
+
+    <div class="navbar">
+        <div class="container">
+            <!-- <input type="checkbox" id="menuToggle">
+            <label for="menuToggle" class="toggle">
+                <span class="top_line common"></span>
+                <span class="middle_line common"></span>
+                <span class="bottom_line common"></span>
+            </label> -->
+            <div class="slide">
+                <h1>Menu</h1>
+                <ul>
+                    <li><a href="./contact.html"><i class="fas fa-cogs"></i>Settings</a></li>
+                    <li><a href=""><i class="fas fa-building"></i>About Us</a></li>
+                </ul>
+            </div>
         </div>
-    </header>
-    <div class="listings-container" id="listingsContainer">
-        <?php if (count($jobListings) > 0): ?>
-            <?php foreach ($jobListings as $job): ?>
-                <div class="job-listing" data-position="<?php echo strtolower($job['position']); ?>">
-                    <img src="<?php echo $job['logo']; ?>" alt="Company Logo" class="company-logo">
-                    <div class="job-details">
-                        <h2><?php echo $job['position']; ?></h2>
-                        <h3><?php echo $job['company_name']; ?></h3>
-                        <p><strong>Skills Required:</strong> <?php echo $job['skills']; ?></p>
-                        <p><strong>Description:</strong> <?php echo $job['description']; ?></p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No job listings available at the moment.</p>
-        <?php endif; ?>
     </div>
+
+
+    <div id="news-slider" class="slider-container">
+        <div class="slides">
+       
+        </div>
+        <div class="slider-controls">
+          <button id="prev-btn" class="button1"><i class="fas fa-angle-left"></i></button>
+          <button id="next-btn" class="button1"><i class="fas fa-angle-right"></i></button>
+        </div>
+      </div>
+
+
+
+      <div class="skills-div">
+        <img src="./assets/images/smartperson.jpg" class="main-img">
+        <div class="header1">
+          <h1>Explore quizzes to<br> evaluate your<br> skills in C++, JavaScript,<br> and Python</h1>
+          <img src="./assets/images/c++.png" class="c" height="100" width="150">
+          <img src="./assets/images/python.png" class="py" height="100" width="100">
+          <img src="./assets/images/javascript.png" class="js" height="100" width="100">
+          <button onclick="window.location.href='./skills.html'">Get Started</button>
+        </div>
+      </div>
+
+
+
+      <div class="ai-flex">
+        <div class="ai">
+            <h1>Have a question?<br> Ask Away!</h1>
+            <a href="./chat.html"><img src="./assets/images/chat2.png"></a>
+           
+        </div>
+        <h2>Ask questions about career trends, tech insights, and more!<br> Get quick answers from our AI chatbot.</h2>
+      </div>
+     
 
 
 
@@ -107,8 +109,7 @@ try {
             </li>
             <li class="nav-item">
                 <label for="input-3">
-                    <input type="radio" id="input-3" name="group"
-                    onclick="location.href='homepage.html';">
+                    <input type="radio" id="input-3" name="group">
                     <span class="btn">
                         <i class="btn-icon fa-solid fa-house"></i>
                         <span class="btn-text">Home</span>
@@ -137,31 +138,11 @@ try {
             </li>
         </ul>
     </nav>
-
-
-
-    <script>
-        function filterListings() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const filterSelect = document.getElementById('filterSelect').value.toLowerCase();
-            const listingsContainer = document.getElementById('listingsContainer');
-            const jobListings = listingsContainer.getElementsByClassName('job-listing');
-
-            for (let i = 0; i < jobListings.length; i++) {
-                const position = jobListings[i].getAttribute('data-position');
-                const jobTitle = jobListings[i].querySelector('h2').textContent.toLowerCase();
-                if ((jobTitle.includes(searchInput) || searchInput === "") && 
-                    (position.includes(filterSelect) || filterSelect === "")) {
-                    jobListings[i].style.display = "";
-                } else {
-                    jobListings[i].style.display = "none";
-                }
-            }
-        }
-
-
-
-        function highlightActivePage() {
+    
+</body>
+<script>
+   
+function highlightActivePage() {
     const path = window.location.pathname;
 
     if (path.includes('home')) {
@@ -178,6 +159,83 @@ try {
 }
 
 window.onload = highlightActivePage;
-    </script>
-</body>
+
+const API_KEY = '0ef5146351e048b08c0ad117edaee266';
+const URL = `https://newsapi.org/v2/top-headlines?category=technology&apiKey=${API_KEY}&pageSize=5`;
+
+let currentIndex = 0;
+let newsData = [];
+
+
+const fetchNews = async () => {
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+    newsData = data.articles;
+    renderSlides();
+  } catch (error) {
+    console.error('Error fetching news:', error);
+  }
+};
+
+
+const renderSlides = () => {
+    const slidesContainer = document.querySelector('.slides');
+    slidesContainer.innerHTML = ''; 
+    
+    newsData.forEach((article, index) => {
+      const slide = document.createElement('div');
+      slide.classList.add('slide1');
+      
+      
+      const imageUrl = article.urlToImage ? article.urlToImage : 'https://via.placeholder.com/800x400?text=No+Image';
+      
+      slide.innerHTML = `
+        <a href="${article.url}" target="_blank"><img src="${imageUrl}" alt="News Image" class="news-image"/></a>
+        <div class="text-overlay">
+          <h2>${article.title}</h2>
+          <p>${article.description || 'No description available'}</p>
+        </div>
+      `;
+      slidesContainer.appendChild(slide);
+    });
+  };
+  
+  
+
+
+  const showSlide = (index) => {
+    const slides = document.querySelector('.slides');
+    const totalSlides = newsData.length;
+    
+    
+    if (index >= totalSlides) {
+      currentIndex = 0;
+    } else if (index < 0) {
+      currentIndex = totalSlides - 1;
+    } else {
+      currentIndex = index;
+    }
+  
+    
+    const slideWidth = slides.querySelector('.slide1').clientWidth;
+    
+    
+    slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+};
+
+
+document.getElementById('prev-btn').addEventListener('click', () => {
+    showSlide(currentIndex - 1);
+});
+
+document.getElementById('next-btn').addEventListener('click', () => {
+    showSlide(currentIndex + 1);
+});
+
+  
+  fetchNews();
+</script>
+
+
 </html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Port+Lligat+Slab&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="skills.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <nav>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <label for="input-1">
+                    <input 
+                    type="radio"
+                    id="input-1"
+                    name="group"
+                    onclick="location.href='skills.html';"
+                    >
+                    <span class="btn">
+                        <i class="btn-icon fa-solid fa-line-chart"></i>
+                        <span class="btn-text">
+                            Skills
+                        </span>
+                    </span>
+                </label>
+            </li>
+            <li class="nav-item">
+                <label for="input-2">
+                    <input 
+                    type="radio"
+                    id="input-2"
+                    name="group"
+                    onclick="location.href='studentListings.php';"
+                     
+                    >
+                    <span class="btn">
+                        <i class="btn-icon fa-solid fa-building"></i>
+                        <span class="btn-text">
+                            Listings
+                        </span>
+                    </span>
+                </label>
+            </li>
+            <li class="nav-item">
+                <label for="input-3">
+                    <input 
+                    type="radio"
+                    id="input-3"
+                    name="group"
+                    onclick="location.href='homepage.html';"
+                    >
+                    <span class="btn">
+                        <i class="btn-icon fa-solid fa-house"></i>
+                        <span class="btn-text">
+                            Home
+                        </span>
+                    </span>
+                </label>
+            </li>
+            <li class="nav-item">
+                <label for="input-4">
+                    <input 
+                    type="radio"
+                    id="input-4"
+                    name="group"
+                    onclick="location.href='chat.html';"
+                    >
+                    <span class="btn">
+                        <i class="btn-icon fa-solid fa-comments"></i>
+                        <span class="btn-text">
+                            Chat
+                        </span>
+                    </span>
+                </label>
+            </li>
+            <li class="nav-item">
+                <label for="input-5">
+                    <input 
+                    type="radio"
+                    id="input-5"
+                    name="group"
+                    onclick="location.href='user_profile.php';">
+                    <span class="btn">
+                        <i class="btn-icon fa-solid fa-user-circle"></i>
+                        <span class="btn-text">
+                            Profile
+                        </span>
+                    </span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+<div class="for-flex">
+    <div class="choose-skills">
+        <h1>Choose your top skills</h1>
+        <ol>
+            <button id="c">C++</button>
+            <button id="py">Python</button>
+            <button id="js">Javascript</button>
+        </ol>
+    </div>
+    <div class="c-div">
+        <h1>What's your C++ skill level? </h1>
+        <ol>
+            <button id="c-button1">Beginner</button>
+            <button id="c-button2">Intermediate</button>
+            <button id="c-button3">Advanced</button>
+        </ol>
+    </div>
+    <div class="p-div">
+        <h1>What's your Python skill level? </h1>
+        <ol>
+            <button id="p-button1">Beginner</button>
+            <button id="p-button2">Intermediate</button>
+            <button id="p-button3">Advanced</button>
+        </ol>
+    </div>
+    <div class="j-div">
+        <h1>What's your Javascript skill level? </h1>
+        <ol>
+            <button id="j-button1">Beginner</button>
+            <button id="j-button2">Intermediate</button>
+            <button id="j-button3">Advanced</button>
+        </ol>
+    </div>
+   
+</div>
+<div class="quiz-flex">
+    <!-- C++ Quiz -->
+    <div class="c-beginner">
+        <h1>Beginner C++ Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="c-beginner-question">Question goes here</h2>
+            <div id="c-beginner-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="c-beginner-next-btn" class="btn button1">Next</button>
+            <button id="c-beginner-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+    <div class="c-intermediate">
+        <h1>Intermediate C++ Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="c-intermediate-question">Question goes here</h2>
+            <div id="c-intermediate-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="c-intermediate-next-btn" class="btn button1">Next</button>
+            <button id="c-intermediate-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+    <div class="c-advanced">
+        <h1>Advanced C++ Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="c-advanced-question">Question goes here</h2>
+            <div id="c-advanced-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="c-advanced-next-btn" class="btn button1">Next</button>
+            <button id="c-advanced-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+
+
+    <!-- Python Quiz -->
+    <div class="p-beginner">
+        <h1>Beginner Python Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="p-beginner-question">Question goes here</h2>
+            <div id="p-beginner-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="p-beginner-next-btn" class="btn button1">Next</button>
+            <button id="p-beginner-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+    <div class="p-intermediate">
+        <h1>Intermediate Python Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="p-intermediate-question">Question goes here</h2>
+            <div id="p-intermediate-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="p-intermediate-next-btn" class="btn button1">Next</button>
+            <button id="p-intermediate-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+    <div class="p-advanced">
+        <h1>Advanced Python Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="p-advanced-question">Question goes here</h2>
+            <div id="p-advanced-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="p-advanced-next-btn" class="btn button1">Next</button>
+            <button id="p-advanced-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+
+    <!-- Javascript Quiz -->
+    <div class="j-beginner">
+        <h1>Beginner Javascript Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="j-beginner-question">Question goes here</h2>
+            <div id="j-beginner-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="j-beginner-next-btn" class="btn button1">Next</button>
+            <button id="j-beginner-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+    <div class="j-intermediate">
+        <h1>Intermediate Javascript Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="j-intermediate-question">Question goes here</h2>
+            <div id="j-intermediate-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="j-intermediate-next-btn" class="btn button1">Next</button>
+            <button id="j-intermediate-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+    <div class="j-advanced">
+        <h1>Advanced Javascript Quiz</h1>
+        <hr>
+        <div class="quiz">
+            <h2 id="j-advanced-question">Question goes here</h2>
+            <div id="j-advanced-answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="j-advanced-next-btn" class="btn button1">Next</button>
+            <button id="j-advanced-back-btn" class="btn button1">Return</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+
+
+<script src="./quiz.js">
+   
+</script>
+</html>
