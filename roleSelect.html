@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONNECTIFY - Choose Role</title>
+    <link rel="stylesheet" href="role.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img src="connectify.png" alt="Website Logo" class="logo">
+    </header>
+    <div class="role-selection">
+        <h1>Welcome to CONNECTIFY</h1>
+        <p>Select your role to continue:</p>
+        <button class="role-btn" onclick="redirectWithAnimation(this, 'student')">Student</button>
+        <button class="role-btn" onclick="redirectWithAnimation(this, 'company')">Company</button>
+    </div>
+
+    <script>
+        // This function triggers the pop-out animation before redirecting
+        function redirectWithAnimation(button, role) {
+            button.classList.add('popout');
+            
+            setTimeout(function() {
+                if (role === 'student') {
+                    window.location.href = 'studentLogin.html';
+                } else {
+                    window.location.href = 'companyLogin.html';
+                }
+            }, 300); 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #C96567, #F6E6D9);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.profile-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    width: 100%;
+    max-width: 700px; 
+}
+
+.profile-content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo-container {
+    flex-shrink: 0; 
+}
+
+.logo {
+    width: 100px; 
+    height: auto;
+    border-radius: 50%;
+}
+
+h1 {
+    font-size: 28px;
+    color: #C96567;
+    margin-bottom: 10px;
+}
+
+.profile-details {
+    max-width: 60%; 
+}
+
+.profile-details p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+strong {
+    color: #C96567;
+}
+
+.logout {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logout-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #C96567; 
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    background: #b0525d; 
+    transform: scale(1.05);
+}
+

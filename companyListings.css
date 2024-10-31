@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #C96567; 
+}
+
+header {
+    background-color: #C96567; 
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    margin: 0;
+    font-size: 4.5em;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    font-size: 1.2em;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px auto;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 2px 20px rgb(255, 0, 179);
+    max-width: 600px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #C96567;
+    border-radius: 7px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #FF69B4; 
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+}
+
+button[type="submit"] {
+    background-color: #C96567; 
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #b0545a; 
+    box-shadow: 0 0 10px rgb(252, 2, 218), 0 0 20px rgba(201, 101, 103, 0.7);
+}
+
+h2 {
+    margin: 20px auto;
+    text-align: center;
+    color: #333;
+    text-shadow: 1px 1px 5px rgb(255, 0, 183);
+}
+
+.job-listings {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+.job-listing {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 5px rgba(255, 0, 200, 0.984);
+}
+
+.logo-container {
+    flex: 0 0 80px; 
+    margin-right: 15px;
+}
+
+.logo {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.job-details {
+    flex: 1; 
+}
+
+.job-details h3 {
+    margin: 0;
+    color: #C96567; 
+}
+
+.job-details p {
+    margin: 5px 0;
+    color: #ff00dd;
+}

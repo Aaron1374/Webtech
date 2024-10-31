@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #212d43, #212d43); 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 320px;
+}
+
+.logo {
+    width: 400px; 
+    height: auto;
+    margin-bottom: 10px;
+    margin-top: 210px;
+    filter: drop-shadow(0 0 5px rgb(255, 255, 255)); /*for outer glow....filter: drop-shadow(0 0 5px gold) drop-shadow(0 0 10px gold);*/
+    display: block;
+}
+
+h1 {
+    font-size: 38px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.signup-container {
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 12px;
+    padding: 40px; 
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); 
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 100%; 
+    max-width: 500px; 
+    animation: fadeIn 1s ease;
+    position: relative;
+    z-index: 1;
+    margin: 20px; 
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+input, select, textarea {
+    margin-bottom: 20px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.2); 
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);/*gradient change later ask ham*/
+    border: 1px solid rgba(0, 255, 255, 0.8);
+}
+
+
+textarea {
+    resize: none;
+    height: 120px;
+}
+
+
+.upload-button-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    display: none; 
+}
+
+.upload-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #0892d0, #4b0082); /*gradient change later ask ham*/
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    width: 100%; 
+    text-align: center;
+}
+
+.upload-button:hover {
+    background: linear-gradient(135deg, #4b0082, #0892d0);
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px rgba(0, 242, 96, 0.6); 
+}
+
+button {
+    background: linear-gradient(135deg, #0892d0, #4b0082); 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #4b0082, #0892d0);
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px rgba(69, 0, 242, 0.6); 
+}
+
+/* Fade-in animation 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}*/

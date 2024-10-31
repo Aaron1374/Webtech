@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    filter: drop-shadow(0 0 5px rgb(255, 255, 255)); /*for outer glow....filter: drop-shadow(0 0 5px gold) drop-shadow(0 0 10px gold);*/
+    margin-right: 180px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #141E30, #243B55);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.3); 
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 100%;
+    max-width: 400px; 
+    text-align: center;
+    animation: fadeIn 1s ease; 
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #ffffff; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+}
+
+input {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2); 
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+input:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); 
+}
+
+button {
+    padding: 15px;
+    background: linear-gradient(135deg, #0892d0, #4b0082); 
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgb(45, 221, 218);
+    background: linear-gradient(135deg,  #4b0082, #0892d0); 
+}
+
+p {
+    margin-top: 15px;
+    color: #fff;
+}
+
+a {
+    color: #00ffcc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #00f2c9;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+}
+

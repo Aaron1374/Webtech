@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONNECTIFY - Company Login</title>
+    <link rel="stylesheet" href="companyLog.css">
+</head>
+<body>
+    <header class="header">
+        <img src="connectify.png" alt="Website Logo" class="logo">
+    </header>
+    <div class="login-container">
+        <h2>Company Login</h2>
+        <form action="company_signup.php" method="POST"> <!-- do this once homepage is done, <form action="studentHOMePAGE.html" method="POST"> this will redirect to student homepage-->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Sign In</button>
+        </form>
+        <p>Don't have an account? <a href="companySignup.html">Sign up here</a></p>
+    </div>
+</body>
+</html>
