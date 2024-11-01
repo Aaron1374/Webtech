@@ -13,6 +13,11 @@ body {
     border-bottom: 2px solid #C96567; 
 }
 
+h1 {
+    font-size: 4.5em;
+}
+
+
 .header h1 {
     color: #C96567; 
     font-size: 4.5em;
@@ -87,6 +92,12 @@ body {
 
 .job-details strong {
     color: #C96567;
+}
+
+
+.position {
+color: aliceblue;
+
 }
 
 

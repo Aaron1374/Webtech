@@ -55,5 +55,44 @@
             <button type="submit">Sign Up</button>
         </form>
     </div>
+
+
+    <script>
+        function validateForm() {
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const phone = document.getElementById("phone").value;
+            const resume = document.getElementById("resume").value;
+
+            if (username.length < 3) {
+                alert("Username must be at least 3 characters.");
+                return false;
+            }
+
+            if (!email.includes("@") || !email.includes(".")) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            if (phone.length !== 10 || isNaN(phone)) {
+                alert("Phone number must be a 10-digit number.");
+                return false;
+            }
+
+
+            if (!resume) {
+                alert("Please upload your resume.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>

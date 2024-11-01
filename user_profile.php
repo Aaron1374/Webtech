@@ -123,6 +123,7 @@ try {
                 <div class="detail-item">
                         <strong>Resume:</strong>
                         <?php if (!empty($user['resume'])): ?>
+                            <a href="./resumes/Palaash Naik (3).pdf"> View Resume</a>
                             <a href="<?php echo 'path_to_resumes/' . htmlspecialchars($user['resume']); ?>" target="_blank" class="resume-link">View Resume</a>
                         <?php else: ?>
                             <span>No resume uploaded.</span>
