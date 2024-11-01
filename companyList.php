@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: companyLog.html");
+    exit();
+}
+
 $host = 'localhost';
 $db = 'student';
 $user = 'root';
@@ -10,22 +15,20 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (!isset($_SESSION['user_id'])) {
-        echo "<script>alert('Please log in to access this page.'); window.location.href = 'companyLogin.html';</script>";
-        exit();
-    }
-
-    $company_id = $_SESSION['user_id'];
-
-    $stmt = $pdo->prepare("SELECT * FROM companies WHERE id = ?");
+    $company_id = $_SESSION['user_id']; 
+    $sql = "SELECT * FROM job_listings WHERE company_id = ?";
+    $stmt = $pdo->prepare($sql);
     $stmt->execute([$company_id]);
-    $company = $stmt->fetch(PDO::FETCH_ASSOC);
+    $jobListings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-    if (!$company) {
-        echo "<script>alert('Company not found.'); window.location.href = 'companyLogin.html';</script>";
-        exit();
+    $applications = [];
+    foreach ($jobListings as $job) {
+        $sql = "SELECT * FROM applications WHERE job_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$job['id']]);
+        $applications[$job['id']] = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -36,7 +39,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Profile</title>
+    <title>Company Listings</title>
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,63 +61,38 @@ try {
 
 
 
-
-
-    <link rel="stylesheet" href="company_user.css">
+    <link rel="stylesheet" href="companyList.css">
 </head>
 <body>
     <header>
-        <h1>Company Profile</h1>
+        <h1>Your Job Listings</h1>
     </header>
-         <div class="profile-container">
-            <div class="profile-content">
-                <div class="user-details">
-                    <h2>Company Profile</h2>
-                    <div class="detail-item">
-                        <strong>Company Name:</strong>
-                        <input type="text" name="company_name" value="<?= htmlspecialchars($company['company_name']) ?>" readonly>
-                    </div>
-                    <div class="detail-item">
-                        <strong>Field:</strong>
-                        <input type="text" name="field" value="<?= htmlspecialchars($company['field']) ?>" readonly>
-                    </div>
-                    <div class="detail-item">
-                        <strong>Email:</strong>
-                        <input type="email" name="email" value="<?= htmlspecialchars($company['email']) ?>" readonly>
-                    </div>
-                    <div class="detail-item">
-                        <strong>Phone:</strong>
-                        <input type="tel" name="phone" value="<?= htmlspecialchars($company['phone']) ?>" readonly>
-                    </div>
-                    <div class="detail-item">
-                        <strong>Address:</strong>
-                        <input type="text" name="address" value="<?= htmlspecialchars($company['address']) ?>" readonly>
-                    </div>
-                    <div class="detail-item">
-                        <strong>State:</strong>
-                        <input type="text" name="state" value="<?= htmlspecialchars($company['state']) ?>" readonly>
-                    </div>
-                    <div class="detail-item">
-                        <strong>City:</strong>
-                        <input type="text" name="city" value="<?= htmlspecialchars($company['city']) ?>" readonly>
-                    </div>
-                    <div class="detail-item">
-                        <strong>Website:</strong>
-                        <input type="url" name="website" value="<?= htmlspecialchars($company['website']) ?>" readonly>
-                    </div>
-                    <div class="detail-item">
-                        <strong>Logo:</strong>
-                        <!--<img src="<?php echo 'logos/' . htmlspecialchars($company['logo']); ?>" alt="Company Logo" class="logo">-->
-                        <img src="logos/connectifyLogo.png" alt="Company Logo" class="logo">
-                    </div>
-                </div>
+    <div class="listings-container">
+        <?php foreach ($jobListings as $job): ?>
+            <div class="job-listing">
+                <h2><?php echo $job['vacancy_type']; ?></h2>
+                <p><strong>Skills Required:</strong> <?php echo $job['skills_required']; ?></p>
+                <p><strong>Description:</strong> <?php echo $job['job_description']; ?></p>
+                <h3>Applications:</h3>
+                <?php if (!empty($applications[$job['id']])): ?>
+                    <ul>
+                        <?php foreach ($applications[$job['id']] as $application): ?>
+                            <li>
+                                <p><strong>Name:</strong> <?php echo $application['name']; ?></p>
+                                <p><strong>Email:</strong> <?php echo $application['email']; ?></p>
+                                <p><strong>Phone:</strong> <?php echo $application['phone']; ?></p>
+                                <p><strong>Resume:</strong> <a href="<?php echo $application['resume_path']; ?>" target="_blank">View Resume</a></p>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>No applications for this job listing.</p>
+                <?php endif; ?>
             </div>
-        </div>
+        <?php endforeach; ?>
+    </div>
 
-
-
-
-        <nav>
+    <nav>
         <ul class="nav-list">
             <li class="nav-item">
                 <label for="input-2">
@@ -158,8 +136,6 @@ try {
             </li>
         </ul>
     </nav>
-
-
 
 </body>
 </html>

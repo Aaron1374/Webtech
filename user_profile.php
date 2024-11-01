@@ -28,16 +28,18 @@ try {
         $phone = $_POST['phone'];
         $address = $_POST['address'];
         $degree = $_POST['degree'];
+        $college = $_POST['college'];
         $education = $_POST['education'];
         $dob = $_POST['dob'];
+        $resume = $_POST['resume'];
 
-        $updateStmt = $pdo->prepare("UPDATE studusers SET username = ?, email = ?, phone = ?, address = ?, degree = ?, education = ?, dob = ? WHERE id = ?");
-        $updateStmt->execute([$username, $email, $phone, $address, $degree, $education, $dob, $userId]);
+        $updateStmt = $pdo->prepare("UPDATE studusers SET username = ?, email = ?, phone = ?, address = ?, degree = ?, college = ?, education = ?, dob = ?, resume = ? WHERE id = ?");
+        $updateStmt->execute([$username, $email, $phone, $address, $degree, $college, $education, $dob, $resume, $userId]);
 
         $stmt->execute([$userId]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        echo "<script>alert('Profile updated successfully!');</script>";
+       // echo "<script>alert('Profile updated successfully!');</script>";
     }
 } catch (PDOException $e) {
     echo "Database connection failed: " . $e->getMessage();
@@ -81,7 +83,7 @@ try {
     <h1>Student Profile</h1>
     </header>
     <div class="profile-container">
-        <form method="POST" action="student_user.php">
+        <form method="POST" action="user_profile.php">
             <div class="profile-content">
                 <div class="user-details">
                     <h2>Profile Details</h2>
@@ -106,6 +108,10 @@ try {
                         <input type="text" name="degree" id="degree" value="<?= htmlspecialchars($user['degree']) ?>" readonly>
                     </div>
                     <div class="detail-item">
+                        <strong>College:</strong>
+                        <input type="text" name="college" id="college" value="<?= htmlspecialchars($user['college']) ?>" readonly>
+                    </div>
+                    <div class="detail-item">
                         <strong>Education Level:</strong>
                         <input type="text" name="education" id="education" value="<?= htmlspecialchars($user['education']) ?>" readonly>
                     </div>
@@ -114,10 +120,14 @@ try {
                         <input type="date" name="dob" id="dob" value="<?= htmlspecialchars($user['dob']) ?>" readonly>
                     </div>
                 </div>
-                <!--<div class="resume-container">
-                    <h2>Resume</h2>
-                    <a href="<?php echo 'path_to_resumes/' . $user['resume']; ?>" target="_blank" class="resume-link">View Resume</a>
-                </div> -->
+                <div class="detail-item">
+                        <strong>Resume:</strong>
+                        <?php if (!empty($user['resume'])): ?>
+                            <a href="<?php echo 'path_to_resumes/' . htmlspecialchars($user['resume']); ?>" target="_blank" class="resume-link">View Resume</a>
+                        <?php else: ?>
+                            <span>No resume uploaded.</span>
+                        <?php endif; ?>
+                    </div>
             </div>
             <div class="logout">
                 <a href="logout.php" class="logout-button">Logout</a>

@@ -19,8 +19,7 @@ try {
         $company = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($company && $password === $company['password']) {
-
-            session_regenerate_id(true);
+            session_regenerate_id(true); 
             $_SESSION['user_id'] = $company['id'];
             $_SESSION['company_name'] = $company['company_name'];
             $_SESSION['email'] = $company['email'];
@@ -28,9 +27,8 @@ try {
             $_SESSION['address'] = $company['address'];
             $_SESSION['field'] = $company['field'];
             $_SESSION['website'] = $company['website'];
-            
 
-            header("Location: homepage.html");
+            header("Location: companyHomepage.html");
             exit();
         } else {
             echo "<script>alert('Login failed! Please check your credentials.');</script>";

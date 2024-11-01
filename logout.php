@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Destroy all session variables
+ //detsroy sesh
 $_SESSION = [];
 
 if (ini_get("session.use_cookies")) {
@@ -11,7 +11,7 @@ if (ini_get("session.use_cookies")) {
 
 session_destroy();
 
-// Redirect to the login page (you can change this to the appropriate page)
-header("Location: login.php");
+// Redirect to the login page
+header("Location: studentLogin.html");
 exit();
 ?>

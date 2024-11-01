@@ -10,10 +10,16 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $pdo->query("SELECT jl.*, c.logo, c.company_name FROM job_listings jl JOIN companies c ON jl.company_id = c.id");
+    $sql = "SELECT jl.id, jl.vacancy_type, jl.skills_required, jl.job_description, c.company_name, c.logo 
+            FROM job_listings jl 
+            JOIN companies c ON jl.company_id = c.id";
+   
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
     $jobListings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
+
 }
 ?>
 <!DOCTYPE html>
@@ -49,14 +55,14 @@ try {
     <link rel="stylesheet" href="studentListings.css">
 </head>
 <body>
-    <header class="header">
+     <header class="header">
         <h1>Job Listings</h1>
         <div class="search-container">
             <input type="text" placeholder="Search by position..." id="searchInput" onkeyup="filterListings()">
             <select id="filterSelect" onchange="filterListings()">
                 <option value="">All Positions</option>
                 <?php foreach ($jobListings as $job): ?>
-                    <option value="<?php echo $job['position']; ?>"><?php echo $job['position']; ?></option>
+                    <option value="<?php echo htmlspecialchars($job['vacancy_type']); ?>"><?php echo htmlspecialchars($job['vacancy_type']); ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -64,13 +70,15 @@ try {
     <div class="listings-container" id="listingsContainer">
         <?php if (count($jobListings) > 0): ?>
             <?php foreach ($jobListings as $job): ?>
-                <div class="job-listing" data-position="<?php echo strtolower($job['position']); ?>">
-                    <img src="<?php echo $job['logo']; ?>" alt="Company Logo" class="company-logo">
+                <div class="job-listing" data-position="<?php echo strtolower($job['vacancy_type']); ?>" data-company="<?php echo strtolower($job['company_name']); ?>">
+                    <!--<img src="<?php echo 'logos/' . htmlspecialchars($job['logo']); ?>" alt="Company Logo" class="company-logo">-->
+                    <img src="logos/connectifyLogo.png" alt="Company Logo" class="company-logo">
                     <div class="job-details">
-                        <h2><?php echo $job['position']; ?></h2>
-                        <h3><?php echo $job['company_name']; ?></h3>
-                        <p><strong>Skills Required:</strong> <?php echo $job['skills']; ?></p>
-                        <p><strong>Description:</strong> <?php echo $job['description']; ?></p>
+                        <h2><?php echo htmlspecialchars($job['vacancy_type']); ?></h2>
+                        <h3><?php echo htmlspecialchars($job['company_name']); ?></h3>
+                        <p><strong>Skills Required:</strong> <?php echo htmlspecialchars($job['skills_required']); ?></p>
+                        <p><strong>Description:</strong> <?php echo htmlspecialchars($job['job_description']); ?></p>
+                        <a href="apply.php?job_id=<?php echo $job['id']; ?>" class="apply-button">Apply</a>                    
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -78,6 +86,7 @@ try {
             <p>No job listings available at the moment.</p>
         <?php endif; ?>
     </div>
+
 
 
 
@@ -178,6 +187,19 @@ try {
 }
 
 window.onload = highlightActivePage;
+
+
+
+/function openApplicationForm(jobId) {
+    document.getElementById('jobId').value = jobId; // Set job ID
+    document.getElementById('applicationModal').style.display = 'block'; // Show modal
+}
+
+function closeApplicationForm() {
+    document.getElementById('applicationModal').style.display = 'none'; // Hide modal
+}
+
+
     </script>
 </body>
 </html>

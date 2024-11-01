@@ -21,7 +21,7 @@ try {
         $required_skills = $_POST['required_skills'];
         $job_description = $_POST['job_description'];
 
-        $sql = "INSERT INTO job_listings (company_id, position, required_skills, job_description) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO job_listings (company_id, vacancy_type, skills_required, job_description) VALUES (?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$company_id, $position, $required_skills, $job_description]);
 

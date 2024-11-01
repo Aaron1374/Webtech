@@ -33,7 +33,8 @@ try {
             echo "<script>window.location.href = 'homepage.html';</script>";  //do this after home done
             exit();
         } else {
-            echo "<script>alert('Login failed! Please check your credentials.');</script>";
+            echo "<script> alert ('Invalid Credentials'); </script>";
+            echo "<script>window.location.href = 'studentLogin.html';</script>";
         }
     }
 } catch (PDOException $e) {
