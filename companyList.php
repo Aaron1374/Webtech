@@ -66,6 +66,7 @@ try {
 <body>
     <header>
         <h1>Your Job Listings</h1>
+        <a href="companyListings.php" class="posi">Create a Listing</a>
     </header>
     <div class="listings-container">
         <?php foreach ($jobListings as $job): ?>
@@ -91,6 +92,7 @@ try {
             </div>
         <?php endforeach; ?>
     </div>
+
 
     <nav>
         <ul class="nav-list">
